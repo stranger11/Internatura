@@ -1,11 +1,11 @@
-package com.example.internatura
+package com.example.internatura.data
 
 
 import com.google.gson.annotations.SerializedName
 
 data class CommentResponse(
-    @SerializedName("photos")
+        @SerializedName("photos")
     val photos: Photos,
-    @SerializedName("stat")
+        @SerializedName("stat")
     val stat: String
 )
