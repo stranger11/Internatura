@@ -25,7 +25,12 @@ class MainActivity : AppCompatActivity() {
             val response = URL(URL_STRING).readText()
             val gson = Gson()
             val flickResponse = gson.fromJson(response, CommentResponse::class.java)
-            Timber.d(flickResponse.toString())
+            val list = flickResponse.photos.photo
+            val mapper = list.map {
+                photo ->
+                "https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_m.jpg"
+            }
+            Timber.d(mapper.toString())
         }.start()
     }
 }
