@@ -1,4 +1,4 @@
-package com.example.internatura
+package com.example.internatura.data
 
 
 import com.google.gson.annotations.SerializedName
