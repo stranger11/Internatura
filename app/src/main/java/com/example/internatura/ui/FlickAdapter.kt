@@ -28,14 +28,14 @@ class FlickAdapter(private val images: List<String>,
 }
 
 class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    private var root: ImageView = view.findViewById(R.id.image)
+    private var imageView: ImageView = view.findViewById(R.id.image)
 
     fun bind(image: String, onClick: (String) -> Unit){
-        Glide.with(root.context)
+        Glide.with(imageView.context)
                 .load(image)
-                .into(root)
+                .into(imageView)
 
-        root.setOnClickListener {
+        imageView.setOnClickListener {
             onClick(image)
         }
     }
