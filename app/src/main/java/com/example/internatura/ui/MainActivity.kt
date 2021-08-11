@@ -12,7 +12,7 @@ import com.google.gson.Gson
 import timber.log.Timber
 import java.net.URL
 
-const val COLUMN_COUNT = 2
+private const val COLUMN_COUNT = 2
 
 class MainActivity : AppCompatActivity() {
 
