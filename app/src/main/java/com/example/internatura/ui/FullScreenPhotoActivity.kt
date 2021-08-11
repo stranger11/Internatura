@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.Glide
 import com.example.internatura.databinding.ActivityFullScreenPhotoBinding
-import com.example.internatura.util.LINK
+import com.example.internatura.util.EXTRA_LINK_PHOTO
 
 class FullScreenPhotoActivity : AppCompatActivity() {
 
@@ -14,11 +14,11 @@ class FullScreenPhotoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mBinding = ActivityFullScreenPhotoBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
-        changeLinkInImage()
+        displayPhoto()
     }
 
-    private fun changeLinkInImage() {
-        val linkFromFirstActivity = intent.getStringExtra(LINK)
-        Glide.with(this).load(linkFromFirstActivity).into(mBinding.fullScreenImage)
+    private fun displayPhoto() {
+        val linkFromFirstActivity = intent.getStringExtra(EXTRA_LINK_PHOTO)
+        Glide.with(this).load(linkFromFirstActivity).into(mBinding.imagePhoto)
     }
 }
