@@ -3,10 +3,8 @@ package com.example.internatura.ui
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.example.internatura.R
 import com.example.internatura.data.CommentResponse
 import com.example.internatura.databinding.ActivityMainBinding
 import com.example.internatura.util.ADD_TO_FAVORITES_TEXT
@@ -18,7 +16,7 @@ import timber.log.Timber
 import java.net.URL
 
 private const val COLUMN_COUNT = 2
-private const val SECOND_ACTIVITY_REQUEST_CODE = 0
+private const val REQUEST_CODE_FULL_SCREEN_PHOTO_ACTIVITY = 0
 
 class MainActivity : AppCompatActivity() {
 
@@ -48,7 +46,7 @@ class MainActivity : AppCompatActivity() {
                        .apply {
                            putExtra(EXTRA_LINK_PHOTO, link)
                        }
-               startActivityForResult(intent, SECOND_ACTIVITY_REQUEST_CODE)
+               startActivityForResult(intent, REQUEST_CODE_FULL_SCREEN_PHOTO_ACTIVITY)
            } }
            initRecyclerView()
         }.start()
@@ -62,7 +60,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == SECOND_ACTIVITY_REQUEST_CODE) {
+        if (requestCode == REQUEST_CODE_FULL_SCREEN_PHOTO_ACTIVITY) {
             if (resultCode == Activity.RESULT_OK) {
                showSnackbar()
             }
