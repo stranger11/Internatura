@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.internatura.R
 import com.example.internatura.data.CommentResponse
 import com.example.internatura.databinding.ActivityMainBinding
 import com.example.internatura.util.ADD_TO_FAVORITES_TEXT
@@ -70,7 +71,7 @@ class MainActivity : AppCompatActivity() {
     private fun showSnackbar() {
         val snackbar = Snackbar.make(
                 mBinding.activityMain,
-                ADD_TO_FAVORITES_TEXT,
+                R.string.add_to_favorite_text,
                 Snackbar.LENGTH_LONG)
         snackbar.show()
     }
