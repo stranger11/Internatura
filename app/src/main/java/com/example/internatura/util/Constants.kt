@@ -5,4 +5,5 @@ const val URL_TO_FLICKR = "https://api.flickr.com/services/rest/?method=flickr.p
         "=json&nojsoncallback=1"
 
 const val EXTRA_LINK_PHOTO = "link for second activity"
+const val ADD_TO_FAVORITES_TEXT = "Картинка была добавлена в избранное"
 

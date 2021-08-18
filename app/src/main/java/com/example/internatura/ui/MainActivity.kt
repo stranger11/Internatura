@@ -1,18 +1,23 @@
 package com.example.internatura.ui
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.internatura.R
 import com.example.internatura.data.CommentResponse
 import com.example.internatura.databinding.ActivityMainBinding
+import com.example.internatura.util.ADD_TO_FAVORITES_TEXT
 import com.example.internatura.util.EXTRA_LINK_PHOTO
 import com.example.internatura.util.URL_TO_FLICKR
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import timber.log.Timber
 import java.net.URL
 
 private const val COLUMN_COUNT = 2
+private const val REQUEST_CODE_FULL_SCREEN_PHOTO_ACTIVITY = 0
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,15 +47,33 @@ class MainActivity : AppCompatActivity() {
                        .apply {
                            putExtra(EXTRA_LINK_PHOTO, link)
                        }
-               startActivity(intent)
+               startActivityForResult(intent, REQUEST_CODE_FULL_SCREEN_PHOTO_ACTIVITY)
            } }
            initRecyclerView()
         }.start()
     }
 
+
     private fun initRecyclerView() {
         mBinding.recyclerView.layoutManager = StaggeredGridLayoutManager(COLUMN_COUNT,
                 StaggeredGridLayoutManager.VERTICAL)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE_FULL_SCREEN_PHOTO_ACTIVITY) {
+            if (resultCode == Activity.RESULT_OK) {
+               showSnackbar()
+            }
+        }
+    }
+
+    private fun showSnackbar() {
+        val snackbar = Snackbar.make(
+                mBinding.activityMain,
+                R.string.add_to_favorite_text,
+                Snackbar.LENGTH_LONG)
+        snackbar.show()
     }
 }
 
